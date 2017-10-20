@@ -37,7 +37,16 @@ SDK 默认会处理事件 `component_verify_ticket` ，并会缓存 `verify_tick
 ```php
 $server = $openPlatform->server;
 
-return $server->serve();
+// 在 laravel 中：
+$response = $server->serve();
+
+// $response 为 `Symfony\Component\HttpFoundation\Response` 实例
+// 对于需要直接输出响应的框架，或者原生 PHP 环境下
+$response->send();
+
+// 而 laravel 中直接返回即可：
+
+return $response;
 ```
 
 
